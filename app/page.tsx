@@ -1,4 +1,4 @@
-import LandingPage1 from "@/components/hero-one";
+import LandingPage1 from "@/components/landing-page-one";
 
 export default function Home() {
   return (
