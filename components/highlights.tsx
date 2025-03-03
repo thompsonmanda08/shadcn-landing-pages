@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SampleMetrics, { DashboardMetrics } from "./metrics";
+import SampleMetrics, { DashboardMetrics, sampleMetrics } from "./metrics";
 
 export default function LoanHighlights() {
   return (
@@ -439,7 +439,7 @@ export default function LoanHighlights() {
           </TabsContent>
 
           <TabsContent value="metrics" className="mt-0">
-            <DashboardMetrics metrics={[]} />
+            <DashboardMetrics metrics={sampleMetrics} />
           </TabsContent>
         </Tabs>
       </div>

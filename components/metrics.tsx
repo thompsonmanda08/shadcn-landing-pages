@@ -1,6 +1,18 @@
 import React, { ReactNode } from "react";
 import { Card, CardContent } from "./ui/card";
-import { Briefcase, Calculator, CreditCard, TrendingUp } from "lucide-react";
+import {
+  BadgeDollarSign,
+  Banknote,
+  BarChart,
+  Briefcase,
+  Calculator,
+  CalendarCheck,
+  Clock,
+  CreditCard,
+  DollarSign,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 
 type Metric = {
   icon: ReactNode;
@@ -45,6 +57,65 @@ function SampleMetrics() {
   );
 }
 
+export const sampleMetrics: Metric[] = [
+  {
+    icon: <Banknote className="h-8 w-8 text-green-600" />,
+    value: "150",
+    label: "Total Active Loans",
+    trend: "+10 from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <DollarSign className="h-8 w-8 text-blue-600" />,
+    value: "$250K",
+    label: "Total Loan Amount Disbursed",
+    trend: "+$25K from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <CalendarCheck className="h-8 w-8 text-purple-600" />,
+    value: "95%",
+    label: "On-Time Repayment Rate",
+    trend: "+2% from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <Clock className="h-8 w-8 text-red-600" />,
+    value: "12%",
+    label: "Overdue Loan Percentage",
+    trend: "-1.5% from last month",
+    trendPositive: false,
+  },
+  {
+    icon: <Users className="h-8 w-8 text-orange-600" />,
+    value: "1,200",
+    label: "Total Borrowers",
+    trend: "+100 from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <BadgeDollarSign className="h-8 w-8 text-teal-600" />,
+    value: "$3,500",
+    label: "Average Loan Size",
+    trend: "+$200 from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <TrendingUp className="h-8 w-8 text-blue-600" />,
+    value: "2.7",
+    label: "Loan Portfolio Overview",
+    trend: "+0.3 from last month",
+    trendPositive: true,
+  },
+  {
+    icon: <BarChart className="h-8 w-8 text-gray-600" />,
+    value: "80%",
+    label: "Loan Approval Rate",
+    trend: "+5% from last month",
+    trendPositive: true,
+  },
+];
+
 export function DashboardMetrics({
   length = 8,
   metrics = [] as Metric[],
@@ -54,18 +125,21 @@ export function DashboardMetrics({
 }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-      {(metrics.length > 0 ? metrics : Array.from({ length })).map(
-        (metric, index) => (
-          <MetricCard
-            key={index}
-            icon={<TrendingUp className="h-8 w-8 text-blue-600" />}
-            value="2.7"
-            label="TEST LABEL"
-            trend="+0.3 from last month"
-            trendPositive={true}
-          />
-        )
-      )}
+      {(metrics.length > 0
+        ? (metrics as Metric[])
+        : (Array.from({ length }) as Metric[])
+      ).map((metric, index: number) => (
+        <MetricCard
+          key={index}
+          icon={
+            metric?.icon || <TrendingUp className="h-8 w-8 text-blue-600" />
+          }
+          value={metric?.value || "0.00"}
+          label={metric?.label || "TEST LABEL"}
+          trend={metric?.trend || "+0.0 from last month"}
+          trendPositive={metric?.trendPositive || false}
+        />
+      ))}
     </div>
   );
 }
