@@ -86,7 +86,7 @@ export function MetricCard({
 }) {
   return (
     <Card>
-      <CardContent className="pt-6">
+      <CardContent className="pt-2">
         <div className="flex items-start justify-between">
           <div>
             <div className="text-3xl font-bold">{value}</div>
